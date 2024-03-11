@@ -1,24 +1,10 @@
-# README
+Tried to deploy this repository on railway.app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built using a dockerfile
 
-Things you may want to cover:
+Got errors related to a missing secret key, so i followed this article: https://paulotijero.dev/articles/deploying-rails-api-in-railway/
+  - Wrote on console "EDITOR='code --wait' rails credentials:edit" to get the secret key
+  - Added secret key on the railway service:
+    -Variables>RAW Editor>JSON {"SECRET_KEY_BASE":"<secret key from previous step>"}
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It deploys fine, but can't save anything on the database because rails app come with sqlite3 as default, and that is not good for production. My suggestion is to start a new rails app with "rails new <app-name> -d=postgresql"
